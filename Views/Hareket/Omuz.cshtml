@@ -1,0 +1,39 @@
+﻿@using YapayAntenor.Models.EntityFramework
+@model List<TBL_Omuz>
+@{
+    ViewBag.Title = "Omuz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/web/img/breadcrumb-bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <h2>OMUZ</h2>
+                    <div class="bt-option">
+                        <a href="/Hareket/Index/">HAREKETLER</a>
+                        <span>OMUZ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<section class="classes-section spad">
+    <div class="container" >
+        @foreach (var x in Model)
+        {
+            <h3 style="color:orangered; text-align:center;">@x.OmuzHareket</h3>
+            <br />
+            <div class="ss-pic" style="text-align:center;" >
+                <img src="@x.OmuzReism" style="height: 500px; width:700px; background-size:cover;" />
+            </div>
+            <span style="text-align: initial; color:darkgray; ">@Html.Raw(x.OmuzAciklama)</span>
+            <br />
+            <br />
+        }
+    </div>
+</section>

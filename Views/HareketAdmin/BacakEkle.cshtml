@@ -1,0 +1,49 @@
+﻿@model YapayAntenor.Models.EntityFramework.TBL_Bacak
+@{
+    ViewBag.Title = "BacakEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<br />
+<h2>Bacak Haraketi Ekle</h2>
+<br />
+@using (Html.BeginForm("BacakEkle", "HareketAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    @Html.LabelFor(x => x.BacakHareket)
+    @Html.TextBoxFor(x => x.BacakHareket, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.BacakResim) 
+    @Html.TextBoxFor(x => x.BacakResim, new { @class = "form-control", @Value=" RESİM URL EKLEYİNİZ..." })
+    @*<input type="file" name="BacakResim"/>
+    <br />*@
+    <br />
+    @Html.LabelFor(x => x.BacakAciklama)
+    @Html.TextAreaFor(x => x.BacakAciklama, new { @class = "form-control", id = "summernote" })
+    <br />
+    @Html.HiddenFor(x => x.BacakID)
+    <button class="btn btn-success">EKLE</button>
+}
+
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Açıklama...',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+
+</script>

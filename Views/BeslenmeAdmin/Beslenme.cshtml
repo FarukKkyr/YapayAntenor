@@ -1,0 +1,51 @@
+﻿@using YapayAntenor.Models.EntityFramework
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBL_Beslenme>
+@{
+    ViewBag.Title = "Beslenme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/table2/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/table2/css/main.css">
+<br />
+<h2>Beslenme Anasayfa</h2>
+<br />
+<table class="table table-bordered">
+    <tr style="background-color: #36304a; color: white;">
+        <th>ID</th>
+        <th>BASLIK</th>
+        <th>YAZAR</th>
+        <th>TARİH</th>
+        <th>GÖRSEL</th>
+        <th>ACİKLAMA</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.BeslenmeID</td>
+            <td>@x.BeslenmeBaslik</td>
+            <td>@x.TBL_Admin.KullaniciAdi</td>
+            <td>@x.BeslenmeTarih</td>
+            <td><img src="@x.BeslenmeResim" style="width:100px; height:100px;" /></td>
+            <td>@Html.Raw(x.BeslenmeAciklama.Substring(0, 70))</td>
+            <td><a href="/BeslenmeAdmin/BeslenmeSil/@x.BeslenmeID" class="btn btn-warning">SIL</a></td>
+            <td><a href="/BeslenmeAdmin/BeslenmeGetir/@x.BeslenmeID" class="btn btn-danger">GUNCELLE</a></td>
+        </tr>
+
+    }
+</table>
+<a href="/BeslenmeAdmin/BeslenmeEkle/" class="btn btn-info"> Yeni Tarif Ekle </a>
+<br />
+<br />
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Blog", new { sayfa })
+ , new PagedListRenderOptions
+ {
+     LiElementClasses = new List<string>
+     { "page-link"}
+ }
+)
+
+

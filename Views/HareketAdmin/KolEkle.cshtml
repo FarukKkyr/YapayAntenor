@@ -1,0 +1,47 @@
+﻿@model YapayAntenor.Models.EntityFramework.TBL_Kol
+@{
+    ViewBag.Title = "KolEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<br />
+<h2>Yeni Kol Hareketi Ekleme Sayfası</h2>
+<br />
+
+@using (Html.BeginForm("KolEkle", "HareketAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(x => x.Hareket)
+    @Html.TextBoxFor(x => x.Hareket, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Resim)
+    @Html.TextBoxFor(x => x.Resim, new { @class = "form-control", @Value = " RESİM URL EKLEYİNİZ..." })
+    @*<input type="file" name="KolResim" />
+    <br />*@
+    <br />
+    @Html.LabelFor(x => x.Aciklama)
+    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control", id = "summernote" })
+    <br />
+    @Html.HiddenFor(x => x.KolID)
+    <button class="btn btn-success">EKLE</button>
+}
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Açıklama...',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+
+</script>

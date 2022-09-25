@@ -1,0 +1,50 @@
+﻿@model YapayAntenor.Models.EntityFramework.TBL_Karin
+@{
+    ViewBag.Title = "KarınGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<br />
+<h2>Karın Hareketleri Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("KarınGuncelle", "HareketAdmin", FormMethod.Post))
+{
+
+    @Html.LabelFor(x => x.KarinHareket)
+    @Html.TextBoxFor(x => x.KarinHareket, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.KarinAciklama)
+    @Html.TextAreaFor(x => x.KarinAciklama, new { @class = "form-control", id = "summernote" })
+    <br />
+
+    @Html.LabelFor(x => x.KarinResim)
+    @Html.TextBoxFor(x => x.KarinResim, new { @class = "form-control" })
+    <br />
+
+    @Html.HiddenFor(x => x.KarinID)
+
+    <button class="btn btn-success">Güncelle</button>
+}
+
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Açıklama...',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+
+</script>
+

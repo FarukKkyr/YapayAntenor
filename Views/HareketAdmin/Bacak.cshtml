@@ -1,0 +1,38 @@
+﻿@using YapayAntenor.Models.EntityFramework
+@model List<TBL_Bacak>
+@{
+    ViewBag.Title = "Bacak";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/table2/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/table2/css/main.css">
+<!--===============================================================================================-->
+<br />
+<h2>Bacak Hareketleri Sayfası</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr style="background-color: #36304a; color: white;">
+        <td>ID</td>
+        <td>ADI</td>
+        <td>GÖRSELİ</td>
+        <td>AÇIKLAMASI</td>
+        <td>SİL</td>
+        <td>GUNCELLE</td>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.BacakID</th>
+            <th>@x.BacakHareket</th>
+            <th><img src="@x.BacakResim" style="width:100px; height:100px;" /></th>
+            <th>@Html.Raw(x.BacakAciklama.Substring(0, 100)) ...</th>
+            <th><a href="/HareketAdmin/BacakSil/@x.BacakID" class="btn btn-danger">SİL</a></th>
+            <th><a href="/HareketAdmin/BacakGetir/@x.BacakID" class="btn btn-warning">GUNCELLE</a></th>
+        </tr>
+    }
+</table>
+<br />
+<a href="/HareketAdmin/BacakEkle/" class="btn btn-info">Yeni Bacak Hareketi Ekle</a>
+

@@ -1,0 +1,46 @@
+﻿@using YapayAntenor.Models.EntityFramework
+@model List<TBL_Kategori>
+@{
+    ViewBag.Title = "Kategori";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/table2/css/main.css">
+<!--===============================================================================================-->
+<br />
+<h2>Kategori İçeriği</h2>
+<br />
+<div class="wrap-table100">
+    <div class="table100">
+        <table>
+            <thead>
+                <tr class="table100-head">
+                    <th>ID</th>
+                    <th>KATEGORİ AD</th>
+                    <th>SİL</th>
+                    <th>GÜNCELLE</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <th>@x.KategoriID</th>
+                        <th>@x.KategoriAd</th>
+                        <th><a href="/KategoriAdmin/KategoriSil/@x.KategoriID" class="btn btn-danger">SİL</a></th>
+                        <th><a href="/KategoriAdmin/KategoriGetir/@x.KategoriID" class="btn btn-warning">GÜNCELLE</a></th>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+        <br />
+        <a href="/KategoriAdmin/KategoriEkle/" class="btn btn-info">Yeni Kategori Ekle</a>
+    </div>
+    </div>
+
+
+
+

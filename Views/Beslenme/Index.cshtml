@@ -1,0 +1,72 @@
+﻿@using YapayAntenor.Models.EntityFramework
+@using PagedList
+@using PagedList.Mvc
+@using System.Text.RegularExpressions
+@model PagedList.IPagedList<TBL_Beslenme>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/web/img/breadcrumb-bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <h2>BESLENME</h2>
+                    <div class="bt-option">
+                        <a href="/Home/Index">ANASAYFA</a>
+                        <span>Beslenme</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Services Section Begin -->
+<section class="services-section spad">
+    <div class="container" style="margin-right:325px;">
+        <div class="row">
+            @foreach (var x in Model)
+            {
+                <div class="col-lg-3 order-lg-2 col-md-4 p-0" style="margin-bottom: 80px; margin-right: 95px; color: #c4c4c4; text-decoration: none; ">
+                    <div class="ss-text" style="height:600px; ">
+                        <div class="ss-pic" style="height: 150px; background-image: url(@x.BeslenmeResim); background-size:cover;">
+
+                        </div>
+                        <br />
+                        <h4>@x.BeslenmeBaslik </h4>
+                        @helper StripHTML(string input)
+                        {
+                            if (!string.IsNullOrEmpty(input))
+                            {
+                                input = Regex.Replace(input, "<.*?>", String.Empty);
+                                <span>@input</span>
+                            }
+                        }
+                        <p>@StripHTML(x.BeslenmeAciklama.Substring(0, 200)) .....  <a href="/Beslenme/BeslenmeDetay/@x.BeslenmeID">Devamını Oku</a> </p>
+                        <p>@x.TBL_Admin.Nickname</p>
+                        <p>@x.BeslenmeTarih</p>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="blog-pagination" style="color:darkorange; margin-left:410px;">
+            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa })
+, new PagedListRenderOptions
+{
+
+    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+    DisplayLinkToLastPage = PagedListDisplayMode.Never,
+    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+    EllipsesFormat = "&#8230;",
+
+
+})
+            </div>
+        </div>
+</section>
+<!-- Services Section End -->

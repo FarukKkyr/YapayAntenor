@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7578aa2d77641d0ba15adff779a4a21" Name="Diagram1">
+        <EntityTypeShape EntityType="TEZModel.TBL_Admin" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Bacak" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Beslenme" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Blog" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Gogus" Width="1.5" PointX="2.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Hakkimizda" Width="1.5" PointX="4.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Karin" Width="1.5" PointX="6.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Kategori" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Kol" Width="1.5" PointX="8.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Omuz" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Sirt" Width="1.5" PointX="2.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEZModel.TBL_Yorumlar" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="TEZModel.FK_TBL_Beslenme_TBL_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="TEZModel.FK_TBL_Blog_TBL_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="TEZModel.FK_TBL_Blog_TBL_Kategori1" ManuallyRouted="false" />
+        <AssociationConnector Association="TEZModel.FK_TBL_Yorumlar_TBL_Blog1" ManuallyRouted="false" />
+        <AssociationConnector Association="TEZModel.FK_TBL_Yorumlar_TBL_Beslenme" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

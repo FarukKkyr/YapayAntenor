@@ -1,0 +1,70 @@
+﻿@model YapayAntenorML.Model.ModelInput
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/themes/StyleSheet1.css" rel="stylesheet" />
+<section class="breadcrumb-section set-bg" data-setbg="/web/img/breadcrumb-bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <h2>AKILLI FITNESS ANTRENÖRÜ</h2>
+                    <div class="bt-option">
+                        <a href="/Home/Index/">Anasayfa</a>
+                        <span>Akıllı Fitness Antrenörü</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<section class="blog-details-section spad" style="color:white;">
+    <div class="container">
+        <h1 style="color:white;">AKILLI FITNESS ANTRENÖRÜ</h1>
+        <form class="form cf" method="post" action="/MLProgram/Index/">
+            <section class="plan cf">
+                <h2 style="color:darkgray;">Yaş aralığını seçiniz:</h2>
+                <input type="radio" name="Yas" id="15-24" value="15-24"><label class="15-24-label four col" for="15-24">15-24</label>
+                <input type="radio" name="Yas" id="24-40" value="24-40"><label class="24-40-label four col" for="24-40">24-40</label>
+                <input type="radio" name="Yas" id="40-65" value="40-65"><label class="40-65-label four col" for="40-65">40-65</label>
+            </section>
+            <section class="payment-plan cf">
+                <h2 style="color:darkgray;">Cinsiyet seçiniz:</h2>
+                <input type="radio" name="Cinsiyet" id="Erkek" value="Erkek"><label class="Erkek-label four col" for="Erkek">Erkek</label>
+                <input type="radio" name="Cinsiyet" id="Kadın" value="Kadın"><label class="Kadın-label four col" for="Kadın">Kadın</label>
+            </section>
+            <section class="payment-type cf">
+                <h2 style="color:darkgray;">Çalışacağınız ekipmanı seçiniz:</h2>
+                <input type="radio" name="Ekipman" id="Dumbbell" value="Dumbbell"><label class="Dumbbell-label four col" for="Dumbbell">Dumbbell</label>
+                <input type="radio" name="Ekipman" id="Barbell" value="Barbell"><label class="Barbell-label four col" for="Barbell">Barbell</label>
+                <input type="radio" name="Ekipman" id="Fitness" value="Fitness"><label class="Fitness-label four col" for="Fitness">Fitness</label>
+                <input type="radio" name="Ekipman" id="Vücut Ağırlığı" value="Vücut Ağırlığı"><label class="Vücut Ağırlığı-label four col" for="Vücut Ağırlığı">Vücut Ağırlığı</label>
+            </section>
+            <section class="plan cf">
+                <h2 style="color:darkgray;">Spor yapma amacınız nedir?</h2>
+                <input type="radio" name="Amac" id="Zayıflamak" value="Zayıflamak"><label class="Zayıflamak-label four col" for="Zayıflamak">Zayıflamak</label>
+                <input type="radio" name="Amac" id="Güçlenmek" value="Güçlenmek"><label class="Güçlenmek-label four col" for="Güçlenmek">Güçlenmek</label>
+                <input type="radio" name="Amac" id="Sağlıklı Olmak" value="Sağlıklı Olmak"><label class="Sağlıklı Olmak-label four col" for="Sağlıklı Olmak">Sağlıklı Olmak</label>
+            </section>
+            <section class="plan cf">
+                <h2 style="color:darkgray;">Ne sıklıkla spor yaparsınız?</h2>
+                <input type="radio" name="Ne_siklikla_spor_yaparsin" id="Nadiren" value="Nadiren"><label class="Nadiren-label four col" for="Nadiren">Nadiren</label>
+                <input type="radio" name="Ne_siklikla_spor_yaparsin" id="Normal" value="Normal"><label class="Normal-label four col" for="Normal">Normal</label>
+                <input type="radio" name="Ne_siklikla_spor_yaparsin" id="Sürekli" value="Sürekli"><label class="Sürekli-label four col" for="Sürekli">Sürekli</label>
+            </section>
+            <input class="submit" type="submit" value="PROGRAM ÖNER">
+            <div class="row">
+                @if (ViewBag.Result != null)
+                {
+                    <h4 style="color:white;"> Program Önerisi:<br /> 
+                @ViewBag.Result.Prediction</h4>
+                }
+            </div>
+        </form>
+    </div>
+</section>
+

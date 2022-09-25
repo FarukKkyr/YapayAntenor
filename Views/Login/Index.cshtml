@@ -1,0 +1,59 @@
+﻿@model YapayAntenor.Models.EntityFramework.TBL_Admin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>LOGİN</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/login/css/style.css">
+
+</head>
+<body class="~/login/img js-fullheight" style="background-image: url(/login/images/bg.jpg);">
+    <section class="ftco-section">
+        <div class="container">            
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap p-0">
+                        <h3 class="mb-4 text-center">Giriş Yapınız</h3>
+                        @using(Html.BeginForm("Index","Login", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                @*<input type="text" class="form-control" name="KullaniciAdi" placeholder="Kullanıcı Adı..." required>*@
+                                @Html.TextBoxFor(x=>x.KullaniciAdi, new {@class="form-control",placeholder="Kullanıcı Adı" })
+                            </div>
+                            <div class="form-group">
+                                @*<input id="password-field" type="password" name="Sifre" class="form-control" placeholder="Şifre..." required>*@
+                                @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control", placeholder = "Şifre" })
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Giriş Yap</button>
+                            </div>
+                        }                
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/login/js/jquery.min.js"></script>
+    <script src="~/login/js/popper.js"></script>
+    <script src="~/login/js/bootstrap.min.js"></script>
+    <script src="~/login/js/main.js"></script>
+
+</body>
+</html>
+
+

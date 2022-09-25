@@ -1,0 +1,38 @@
+﻿@using YapayAntenor.Models.EntityFramework
+@model List<TBL_Omuz>
+@{
+    ViewBag.Title = "Omuz";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/table2/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/table2/css/main.css">
+<!--===============================================================================================-->
+<br />
+<h2>Omuz Hareketleri Sayfası</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr style="background-color: #36304a; color: white;">
+        <td>ID</td>
+        <td>ADI</td>
+        <td>GÖRSELİ</td>
+        <td>AÇIKLAMASI</td>
+        <td>SİL</td>
+        <td>GUNCELLE</td>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.OmuzID</th>
+            <th>@x.OmuzHareket</th>
+            <th><img src="@x.OmuzReism" style="width:100px; height:100px;" /></th>
+            <th>@Html.Raw(x.OmuzAciklama.Substring(0, 100)) ...</th>
+            <th><a href="/HareketAdmin/OmuzSil/@x.OmuzID" class="btn btn-danger">SİL</a></th>
+            <th><a href="/HareketAdmin/OmuzGetir/@x.OmuzID" class="btn btn-warning">GUNCELLE</a></th>
+        </tr>
+    }
+</table>
+<br />
+<a href="/HareketAdmin/OmuzEkle/" class="btn btn-info">Yeni Omuz Hareketi Ekle</a>
+

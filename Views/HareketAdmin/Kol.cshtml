@@ -1,0 +1,38 @@
+﻿@using YapayAntenor.Models.EntityFramework
+@model List<TBL_Kol>
+@{
+    ViewBag.Title = "Kol";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/table2/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/table2/css/main.css">
+<!--===============================================================================================-->
+<br />
+<h2>Kol Hareketleri Sayfası</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr style="background-color: #36304a; color: white;">
+        <td>ID</td>
+        <td>ADI</td>
+        <td>GÖRSELİ</td>
+        <td>AÇIKLAMASI</td>
+        <td>SİL</td>
+        <td>GUNCELLE</td>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.KolID</th>
+            <th>@x.Hareket</th>
+            <th><img src="@x.Resim" style="width:100px; height:100px;" /></th>
+            <th>@Html.Raw(x.Aciklama.Substring(0, 100)) ...</th>
+            <th><a href="/HareketAdmin/KolSil/@x.KolID" class="btn btn-danger">SİL</a></th>
+            <th><a href="/HareketAdmin/KolGetir/@x.KolID" class="btn btn-warning">GUNCELLE</a></th>
+        </tr>
+    }
+</table>
+<br />
+<a href="/HareketAdmin/KolEkle/" class="btn btn-info">Yeni Kol Hareketi Ekle</a>
+

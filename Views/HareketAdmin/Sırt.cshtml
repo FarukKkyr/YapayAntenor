@@ -1,0 +1,38 @@
+﻿@using YapayAntenor.Models.EntityFramework
+@model List<TBL_Sirt>
+@{
+    ViewBag.Title = "Sırt";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/table2/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/table2/css/main.css">
+<!--===============================================================================================-->
+<br />
+<h2>Sırt Hareketleri Sayfası</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr style="background-color: #36304a; color: white;">
+        <td>ID</td>
+        <td>ADI</td>
+        <td>GÖRSELİ</td>
+        <td>AÇIKLAMASI</td>
+        <td>SİL</td>
+        <td>GUNCELLE</td>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.SirtID</th>
+            <th>@x.SırtHareket</th>
+            <th><img src="@x.SırtResim" style="width:100px; height:100px;" /></th>
+            <th>@Html.Raw(x.SırtAciklama.Substring(0, 100)) ...</th>
+            <th><a href="/HareketAdmin/SırtSil/@x.SirtID" class="btn btn-danger">SİL</a></th>
+            <th><a href="/HareketAdmin/SırtGetir/@x.SirtID" class="btn btn-warning">GUNCELLE</a></th>
+        </tr>
+    }
+</table>
+<br />
+<a href="/HareketAdmin/SırtEkle/" class="btn btn-info">Yeni Sırt Hareketi Ekle</a>
+

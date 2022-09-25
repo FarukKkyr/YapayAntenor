@@ -1,0 +1,248 @@
+﻿@using YapayAntenor.Models.EntityFramework
+@using PagedList
+@using PagedList.Mvc
+@using System.Text.RegularExpressions
+@model PagedList.IPagedList<TBL_Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Slider Başlangıç -->
+<section class="hero-section">
+    <div class="hs-slider owl-carousel">
+        <div class="hs-item set-bg" data-setbg="/web/img/hero/hero-1.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-6">
+                        <div class="hi-text">
+                            <h1>Train <strong>INSANE</strong> or Remain <br /><strong>THE SAME</strong> </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hs-item set-bg" data-setbg="/web/img/hero/hero-2.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-6">
+                        <div class="hi-text">
+
+                            <h1>Train <strong>INSANE</strong> or Remain <br /><strong>THE SAME</strong> </h1>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Slider Son -->
+<!-- Bizi Seçin Başlangıç -->
+<section class="choseus-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Neden Bizi Seçmelisiniz?</span>
+                    <h2>LİMİTLERİNİ SONUNA KADAR ZORLA!</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-034-stationary-bike"></span>
+                    <h4>Ücretsiz Bilgi</h4>
+                    <p>
+                        Bilgiyi uygularsanız büyürsünüz, paylaşırsanız efsane olursunuz.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-033-juice"></span>
+                    <h4>Sağlıklı Beslenme Önerileri</h4>
+                    <p>
+                        Dünyanın en büyük zenginliği, beden sağlığından başka bir şey değildir.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-002-dumbell"></span>
+                    <h4>Tecrübeli Antrenman Planları</h4>
+                    <p>
+                        Motivasyon “başlamanı” sağlar. Devam etmen için “alışkanlık” olmalı.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-014-heart-beat"></span>
+                    <h4>İhtiyaçlarınızı Karşılamak</h4>
+                    <p>
+                        Fitness ile ilgili merak ettiğin her şeyi burada bulacaksın.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Bizi Seçin Bitiş -->
+<!-- Kas Bölgeleri Kısmı -->
+<section class="services-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>SON BLOGLAR</h2>
+                </div>
+            </div>
+            @foreach (var x in Model)
+            {
+                <div class="col-lg-3 order-lg-2 col-md-6 p-0" style="margin-bottom: 80px; margin-right: 80px; color: #c4c4c4; text-decoration:none; ">
+                    <div class="ss-text" style="height:600px; ">
+                        <div class="ss-pic" style="height: 150px; background-image:url(@x.BlogImage) ; background-size: cover;  ">
+
+                        </div>
+                        <br />
+                        <h4>@x.BlogBaslik </h4>
+                        @helper StripHTML(string input)
+                        {
+                            if (!string.IsNullOrEmpty(input))
+                            {
+                                input = Regex.Replace(input, "<.*?>", String.Empty);
+                                <span>@input</span>
+                            }
+                        }
+                        <p>@StripHTML(x.BlogAciklama.Substring(0, 200)) ...  <a href="/Blog/BlogDetay/@x.BlogID">Devamını Oku</a> </p>
+                        <p>@x.TBL_Admin.Nickname</p>
+                        <span>@x.BlogTarih</span>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+<!-- ChoseUs Section End -->
+<!-- Banner Başlangıç -->
+<section class="banner-section set-bg" data-setbg="/web/img/banner-bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="bs-text">
+                    <div class="bt-tips">Sağlık, Güç ve Zindeliğin buluştuğu yer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Bitiş -->
+<!-- Kas Bölgeleri Başlangıcı -->
+<section class="classes-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>KAS BÖLGELERİ</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="class-item">
+                    <div class="ci-pic">
+                        <img src="~/web/img/classes/legs.jpg" alt="">
+                    </div>
+                    <div class="ci-text">
+                        <h5>BACAK</h5>
+                        <a href="/Hareket/Bacak/"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="class-item">
+                    <div class="ci-pic">
+                        <img src="~/web/img/classes/chest.jpg" alt="">
+                    </div>
+                    <div class="ci-text">
+                        <h5>GÖĞÜS</h5>
+                        <a href="/Hareket/Gogus/"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="class-item">
+                    <div class="ci-pic">
+                        <img src="~/web/img/classes/back.jpg" alt="">
+                    </div>
+                    <div class="ci-text">
+                        <h5>SIRT</h5>
+                        <a href="/Hareket/Sırt/"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="class-item">
+                    <div class="ci-pic">
+                        <img src="~/web/img/classes/arm.jpg" alt="">
+                    </div>
+                    <div class="ci-text">
+                        <h5>KOL</h5>
+                        <a href="/Hareket/Kol/"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="class-item">
+                    <div class="ci-pic">
+                        <img src="~/web/img/classes/shoulder.jpg" alt="">
+                    </div>
+                    <div class="ci-text">
+                        <h5>OMUZ</h5>
+                        <a href="/Hareket/Omuz/"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="class-item">
+                    <div class="ci-pic">
+                        <img src="~/web/img/classes/karın.jpg" alt="">
+                    </div>
+                    <div class="ci-text">
+                        <h5>Karın</h5>
+                        <a href="/Hareket/Karın/"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Kas Bölgeleri Bitiş -->
+<!-- Galeri -->
+<div class="gallery-section">
+    <div class="gallery">
+        <div class="grid-sizer"></div>
+        <div class="gs-item grid-wide set-bg" data-setbg="/web/img/gallery/gallery-1.jpg">
+            <a href="~/web/img/gallery/gallery-1.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item set-bg" data-setbg="/web/img/gallery/gallery-2.jpg">
+            <a href="~/web/img/gallery/gallery-2.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item set-bg" data-setbg="/web/img/gallery/gallery-3.jpg">
+            <a href="~/web/img/gallery/gallery-3.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item set-bg" data-setbg="/web/img/gallery/gallery-4.jpg">
+            <a href="~/web/img/gallery/gallery-4.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item set-bg" data-setbg="/web/img/gallery/gallery-5.jpg">
+            <a href="~/web/img/gallery/gallery-5.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item grid-wide set-bg" data-setbg="/web/img/gallery/gallery-6.jpg">
+            <a href="~/web/img/gallery/gallery-6.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+    </div>
+</div>
+<!-- Galeri -->

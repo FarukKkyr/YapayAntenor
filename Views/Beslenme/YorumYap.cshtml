@@ -1,0 +1,11 @@
+﻿<div class="leave-comment">
+    <h5>YORUM YAP</h5>
+
+    <form method="post">
+        <input type="hidden" placeholder="ID" name="Beslenme" value="@ViewBag.deger" required>
+        <input type="text" placeholder="Kullanıcı Adı" name="KullaniciAdi" required>
+        <input type="text" placeholder="Email" name="Mail" required>
+        <textarea placeholder="Yorum Yap..." name="Yorum" required></textarea>
+        <button type="submit">Gönder</button>
+    </form>
+</div>

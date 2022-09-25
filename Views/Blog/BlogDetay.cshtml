@@ -1,0 +1,78 @@
+﻿@model YapayAntenor.Models.EntityFramework.BlogYorum
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Blog Details Hero Section Begin -->
+<section class="blog-details-hero set-bg" data-setbg="/web/img/blog/details/details-hero.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 p-0 m-auto">
+                <div class="bh-text">
+                    @foreach(var x in Model.Deger1)
+                    {
+                    <h3>@x.BlogBaslik</h3>
+                    <ul>
+                        <li>@x.TBL_Admin.Nickname</li>
+                        <li>@x.BlogTarih</li>
+                    </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Details Hero Section End -->
+<!-- Blog Details Section Begin -->
+<section class="blog-details-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 p-0 m-auto">
+                <div class="blog-details-text" style="width:800px;"   >
+                    @foreach (var y in Model.Deger1)
+                    {                    
+
+                    <div class="blog-details-title" style="color: white; text-align:justify;  ">
+                        @Html.Raw(y.BlogAciklama)
+                    </div>
+
+                    <div class="blog-details-pic">
+                        <img src="@y.BlogImage" alt="">
+                    </div>
+
+                    <div class="blog-details-tag-share">
+                        <div class="tags">
+                            <a href="#">@y.TBL_Kategori.KategoriAd</a>
+                        </div>
+                    </div>
+                    }
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="comment-option">
+                                <h4 class="co-title">Yorumlar</h4>                                
+                                <div class="co-item">
+                                    @foreach (var z in Model.Deger2)
+                                    {
+                                    <div class="co-pic">
+                                        <h5>@z.KullaniciAdi</h5>
+                                    </div>
+                                    <div class="co-text">
+                                        <p>@z.Yorum </p> 
+                                            <a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            @Html.Action("YorumYap", "Blog")
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Details Section End -->

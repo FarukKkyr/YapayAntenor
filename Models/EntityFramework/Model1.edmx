@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TEZModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="15" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="30" />
+          <Property Name="Nickname" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TBL_Bacak">
+          <Key>
+            <PropertyRef Name="BacakID" />
+          </Key>
+          <Property Name="BacakID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BacakResim" Type="nvarchar(max)" />
+          <Property Name="BacakHareket" Type="nvarchar" MaxLength="20" />
+          <Property Name="BacakAciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_Beslenme">
+          <Key>
+            <PropertyRef Name="BeslenmeID" />
+          </Key>
+          <Property Name="BeslenmeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BeslenmeBaslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="BeslenmeResim" Type="nvarchar(max)" />
+          <Property Name="BeslenmeTarih" Type="datetime" />
+          <Property Name="BeslenmeYazar" Type="int" />
+          <Property Name="BeslenmeAciklama" Type="nvarchar(max)" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogBaslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="BlogTarih" Type="datetime" />
+          <Property Name="BlogAciklama" Type="nvarchar(max)" />
+          <Property Name="BlogYazar" Type="int" />
+          <Property Name="BlogImage" Type="nvarchar(max)" />
+          <Property Name="BlogKategori" Type="int" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_Gogus">
+          <Key>
+            <PropertyRef Name="GogusID" />
+          </Key>
+          <Property Name="GogusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GogusResim" Type="nvarchar(max)" />
+          <Property Name="GogusHareket" Type="nvarchar" MaxLength="20" />
+          <Property Name="GogusAciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_Hakkimizda">
+          <Key>
+            <PropertyRef Name="HakkimizdaID" />
+          </Key>
+          <Property Name="HakkimizdaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HakkimizdaResim" Type="nvarchar(max)" />
+          <Property Name="HakkimizdaAciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_Karin">
+          <Key>
+            <PropertyRef Name="KarinID" />
+          </Key>
+          <Property Name="KarinID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KarinResim" Type="nvarchar(max)" />
+          <Property Name="KarinHareket" Type="nvarchar" MaxLength="20" />
+          <Property Name="KarinAciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_Kategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_Kol">
+          <Key>
+            <PropertyRef Name="KolID" />
+          </Key>
+          <Property Name="KolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Resim" Type="nvarchar(max)" />
+          <Property Name="Hareket" Type="nvarchar" MaxLength="20" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_Omuz">
+          <Key>
+            <PropertyRef Name="OmuzID" />
+          </Key>
+          <Property Name="OmuzID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OmuzReism" Type="nvarchar(max)" />
+          <Property Name="OmuzHareket" Type="nvarchar" MaxLength="20" />
+          <Property Name="OmuzAciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_Sirt">
+          <Key>
+            <PropertyRef Name="SirtID" />
+          </Key>
+          <Property Name="SirtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SırtResim" Type="nvarchar(max)" />
+          <Property Name="SırtHareket" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SırtAciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_Yorumlar">
+          <Key>
+            <PropertyRef Name="YorumID" />
+          </Key>
+          <Property Name="YorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Yorum" Type="nvarchar" MaxLength="250" />
+          <Property Name="Blog" Type="int" />
+          <Property Name="Beslenme" Type="int" />
+        </EntityType>
+        <Association Name="FK_TBL_Beslenme_TBL_Admin">
+          <End Role="TBL_Admin" Type="Self.TBL_Admin" Multiplicity="0..1" />
+          <End Role="TBL_Beslenme" Type="Self.TBL_Beslenme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="TBL_Beslenme">
+              <PropertyRef Name="BeslenmeYazar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Blog_TBL_Admin">
+          <End Role="TBL_Admin" Type="Self.TBL_Admin" Multiplicity="0..1" />
+          <End Role="TBL_Blog" Type="Self.TBL_Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="TBL_Blog">
+              <PropertyRef Name="BlogYazar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Blog_TBL_Kategori1">
+          <End Role="TBL_Kategori" Type="Self.TBL_Kategori" Multiplicity="0..1" />
+          <End Role="TBL_Blog" Type="Self.TBL_Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Kategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="TBL_Blog">
+              <PropertyRef Name="BlogKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Yorumlar_TBL_Beslenme">
+          <End Role="TBL_Beslenme" Type="Self.TBL_Beslenme" Multiplicity="0..1" />
+          <End Role="TBL_Yorumlar" Type="Self.TBL_Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Beslenme">
+              <PropertyRef Name="BeslenmeID" />
+            </Principal>
+            <Dependent Role="TBL_Yorumlar">
+              <PropertyRef Name="Beslenme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Yorumlar_TBL_Blog1">
+          <End Role="TBL_Blog" Type="Self.TBL_Blog" Multiplicity="0..1" />
+          <End Role="TBL_Yorumlar" Type="Self.TBL_Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="TBL_Yorumlar">
+              <PropertyRef Name="Blog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TEZModelStoreContainer">
+          <EntitySet Name="TBL_Admin" EntityType="Self.TBL_Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Bacak" EntityType="Self.TBL_Bacak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Beslenme" EntityType="Self.TBL_Beslenme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Blog" EntityType="Self.TBL_Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Gogus" EntityType="Self.TBL_Gogus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Hakkimizda" EntityType="Self.TBL_Hakkimizda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Karin" EntityType="Self.TBL_Karin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Kategori" EntityType="Self.TBL_Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Kol" EntityType="Self.TBL_Kol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Omuz" EntityType="Self.TBL_Omuz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Sirt" EntityType="Self.TBL_Sirt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Yorumlar" EntityType="Self.TBL_Yorumlar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBL_Beslenme_TBL_Admin" Association="Self.FK_TBL_Beslenme_TBL_Admin">
+            <End Role="TBL_Admin" EntitySet="TBL_Admin" />
+            <End Role="TBL_Beslenme" EntitySet="TBL_Beslenme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Blog_TBL_Admin" Association="Self.FK_TBL_Blog_TBL_Admin">
+            <End Role="TBL_Admin" EntitySet="TBL_Admin" />
+            <End Role="TBL_Blog" EntitySet="TBL_Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Blog_TBL_Kategori1" Association="Self.FK_TBL_Blog_TBL_Kategori1">
+            <End Role="TBL_Kategori" EntitySet="TBL_Kategori" />
+            <End Role="TBL_Blog" EntitySet="TBL_Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Yorumlar_TBL_Beslenme" Association="Self.FK_TBL_Yorumlar_TBL_Beslenme">
+            <End Role="TBL_Beslenme" EntitySet="TBL_Beslenme" />
+            <End Role="TBL_Yorumlar" EntitySet="TBL_Yorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Yorumlar_TBL_Blog1" Association="Self.FK_TBL_Yorumlar_TBL_Blog1">
+            <End Role="TBL_Blog" EntitySet="TBL_Blog" />
+            <End Role="TBL_Yorumlar" EntitySet="TBL_Yorumlar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TEZModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Nickname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_Beslenme" Relationship="Self.FK_TBL_Beslenme_TBL_Admin" FromRole="TBL_Admin" ToRole="TBL_Beslenme" />
+          <NavigationProperty Name="TBL_Blog" Relationship="Self.FK_TBL_Blog_TBL_Admin" FromRole="TBL_Admin" ToRole="TBL_Blog" />
+        </EntityType>
+        <EntityType Name="TBL_Bacak">
+          <Key>
+            <PropertyRef Name="BacakID" />
+          </Key>
+          <Property Name="BacakID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BacakResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BacakHareket" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BacakAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_Beslenme">
+          <Key>
+            <PropertyRef Name="BeslenmeID" />
+          </Key>
+          <Property Name="BeslenmeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BeslenmeBaslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BeslenmeResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BeslenmeTarih" Type="DateTime" Precision="3" />
+          <Property Name="BeslenmeYazar" Type="Int32" />
+          <Property Name="BeslenmeAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_Admin" Relationship="Self.FK_TBL_Beslenme_TBL_Admin" FromRole="TBL_Beslenme" ToRole="TBL_Admin" />
+          <NavigationProperty Name="TBL_Yorumlar" Relationship="TEZModel.FK_TBL_Yorumlar_TBL_Beslenme" FromRole="TBL_Beslenme" ToRole="TBL_Yorumlar" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TBL_Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogBaslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BlogTarih" Type="DateTime" Precision="3" />
+          <Property Name="BlogAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BlogYazar" Type="Int32" />
+          <Property Name="BlogImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BlogKategori" Type="Int32" />
+          <NavigationProperty Name="TBL_Admin" Relationship="Self.FK_TBL_Blog_TBL_Admin" FromRole="TBL_Blog" ToRole="TBL_Admin" />
+          <NavigationProperty Name="TBL_Kategori" Relationship="Self.FK_TBL_Blog_TBL_Kategori1" FromRole="TBL_Blog" ToRole="TBL_Kategori" />
+          <NavigationProperty Name="TBL_Yorumlar" Relationship="Self.FK_TBL_Yorumlar_TBL_Blog1" FromRole="TBL_Blog" ToRole="TBL_Yorumlar" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TBL_Gogus">
+          <Key>
+            <PropertyRef Name="GogusID" />
+          </Key>
+          <Property Name="GogusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GogusResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GogusHareket" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GogusAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_Hakkimizda">
+          <Key>
+            <PropertyRef Name="HakkimizdaID" />
+          </Key>
+          <Property Name="HakkimizdaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HakkimizdaResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HakkimizdaAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_Karin">
+          <Key>
+            <PropertyRef Name="KarinID" />
+          </Key>
+          <Property Name="KarinID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KarinResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KarinHareket" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KarinAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_Kategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_Blog" Relationship="Self.FK_TBL_Blog_TBL_Kategori1" FromRole="TBL_Kategori" ToRole="TBL_Blog" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TBL_Kol">
+          <Key>
+            <PropertyRef Name="KolID" />
+          </Key>
+          <Property Name="KolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hareket" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_Omuz">
+          <Key>
+            <PropertyRef Name="OmuzID" />
+          </Key>
+          <Property Name="OmuzID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OmuzReism" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OmuzHareket" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OmuzAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_Sirt">
+          <Key>
+            <PropertyRef Name="SirtID" />
+          </Key>
+          <Property Name="SirtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SırtResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SırtHareket" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SırtAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_Yorumlar">
+          <Key>
+            <PropertyRef Name="YorumID" />
+          </Key>
+          <Property Name="YorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Yorum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Blog" Type="Int32" />
+          <NavigationProperty Name="TBL_Blog" Relationship="Self.FK_TBL_Yorumlar_TBL_Blog1" FromRole="TBL_Yorumlar" ToRole="TBL_Blog" />
+          <Property Name="Beslenme" Type="Int32" />
+          <NavigationProperty Name="TBL_Beslenme" Relationship="TEZModel.FK_TBL_Yorumlar_TBL_Beslenme" FromRole="TBL_Yorumlar" ToRole="TBL_Beslenme" />
+        </EntityType>
+        <Association Name="FK_TBL_Beslenme_TBL_Admin">
+          <End Role="TBL_Admin" Type="Self.TBL_Admin" Multiplicity="0..1" />
+          <End Role="TBL_Beslenme" Type="Self.TBL_Beslenme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="TBL_Beslenme">
+              <PropertyRef Name="BeslenmeYazar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Blog_TBL_Admin">
+          <End Role="TBL_Admin" Type="Self.TBL_Admin" Multiplicity="0..1" />
+          <End Role="TBL_Blog" Type="Self.TBL_Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="TBL_Blog">
+              <PropertyRef Name="BlogYazar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Blog_TBL_Kategori1">
+          <End Role="TBL_Kategori" Type="Self.TBL_Kategori" Multiplicity="0..1" />
+          <End Role="TBL_Blog" Type="Self.TBL_Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Kategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="TBL_Blog">
+              <PropertyRef Name="BlogKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Yorumlar_TBL_Blog1">
+          <End Role="TBL_Blog" Type="Self.TBL_Blog" Multiplicity="0..1" />
+          <End Role="TBL_Yorumlar" Type="Self.TBL_Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="TBL_Yorumlar">
+              <PropertyRef Name="Blog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TEZEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_Admin" EntityType="Self.TBL_Admin" />
+          <EntitySet Name="TBL_Bacak" EntityType="Self.TBL_Bacak" />
+          <EntitySet Name="TBL_Beslenme" EntityType="Self.TBL_Beslenme" />
+          <EntitySet Name="TBL_Blog" EntityType="Self.TBL_Blog" />
+          <EntitySet Name="TBL_Gogus" EntityType="Self.TBL_Gogus" />
+          <EntitySet Name="TBL_Hakkimizda" EntityType="Self.TBL_Hakkimizda" />
+          <EntitySet Name="TBL_Karin" EntityType="Self.TBL_Karin" />
+          <EntitySet Name="TBL_Kategori" EntityType="Self.TBL_Kategori" />
+          <EntitySet Name="TBL_Kol" EntityType="Self.TBL_Kol" />
+          <EntitySet Name="TBL_Omuz" EntityType="Self.TBL_Omuz" />
+          <EntitySet Name="TBL_Sirt" EntityType="Self.TBL_Sirt" />
+          <EntitySet Name="TBL_Yorumlar" EntityType="Self.TBL_Yorumlar" />
+          <AssociationSet Name="FK_TBL_Beslenme_TBL_Admin" Association="Self.FK_TBL_Beslenme_TBL_Admin">
+            <End Role="TBL_Admin" EntitySet="TBL_Admin" />
+            <End Role="TBL_Beslenme" EntitySet="TBL_Beslenme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Blog_TBL_Admin" Association="Self.FK_TBL_Blog_TBL_Admin">
+            <End Role="TBL_Admin" EntitySet="TBL_Admin" />
+            <End Role="TBL_Blog" EntitySet="TBL_Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Blog_TBL_Kategori1" Association="Self.FK_TBL_Blog_TBL_Kategori1">
+            <End Role="TBL_Kategori" EntitySet="TBL_Kategori" />
+            <End Role="TBL_Blog" EntitySet="TBL_Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Yorumlar_TBL_Blog1" Association="Self.FK_TBL_Yorumlar_TBL_Blog1">
+            <End Role="TBL_Blog" EntitySet="TBL_Blog" />
+            <End Role="TBL_Yorumlar" EntitySet="TBL_Yorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Yorumlar_TBL_Beslenme" Association="TEZModel.FK_TBL_Yorumlar_TBL_Beslenme">
+            <End Role="TBL_Beslenme" EntitySet="TBL_Beslenme" />
+            <End Role="TBL_Yorumlar" EntitySet="TBL_Yorumlar" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_TBL_Yorumlar_TBL_Beslenme">
+          <End Type="TEZModel.TBL_Beslenme" Role="TBL_Beslenme" Multiplicity="0..1" />
+          <End Type="TEZModel.TBL_Yorumlar" Role="TBL_Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Beslenme">
+              <PropertyRef Name="BeslenmeID" />
+            </Principal>
+            <Dependent Role="TBL_Yorumlar">
+              <PropertyRef Name="Beslenme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TEZModelStoreContainer" CdmEntityContainer="TEZEntities">
+          <EntitySetMapping Name="TBL_Admin">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Admin">
+              <MappingFragment StoreEntitySet="TBL_Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Bacak">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Bacak">
+              <MappingFragment StoreEntitySet="TBL_Bacak">
+                <ScalarProperty Name="BacakID" ColumnName="BacakID" />
+                <ScalarProperty Name="BacakResim" ColumnName="BacakResim" />
+                <ScalarProperty Name="BacakHareket" ColumnName="BacakHareket" />
+                <ScalarProperty Name="BacakAciklama" ColumnName="BacakAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Beslenme">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Beslenme">
+              <MappingFragment StoreEntitySet="TBL_Beslenme">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="BeslenmeID" ColumnName="BeslenmeID" />
+                <ScalarProperty Name="BeslenmeBaslik" ColumnName="BeslenmeBaslik" />
+                <ScalarProperty Name="BeslenmeResim" ColumnName="BeslenmeResim" />
+                <ScalarProperty Name="BeslenmeTarih" ColumnName="BeslenmeTarih" />
+                <ScalarProperty Name="BeslenmeYazar" ColumnName="BeslenmeYazar" />
+                <ScalarProperty Name="BeslenmeAciklama" ColumnName="BeslenmeAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Blog">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Blog">
+              <MappingFragment StoreEntitySet="TBL_Blog">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="BlogBaslik" ColumnName="BlogBaslik" />
+                <ScalarProperty Name="BlogTarih" ColumnName="BlogTarih" />
+                <ScalarProperty Name="BlogAciklama" ColumnName="BlogAciklama" />
+                <ScalarProperty Name="BlogYazar" ColumnName="BlogYazar" />
+                <ScalarProperty Name="BlogImage" ColumnName="BlogImage" />
+                <ScalarProperty Name="BlogKategori" ColumnName="BlogKategori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Gogus">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Gogus">
+              <MappingFragment StoreEntitySet="TBL_Gogus">
+                <ScalarProperty Name="GogusID" ColumnName="GogusID" />
+                <ScalarProperty Name="GogusResim" ColumnName="GogusResim" />
+                <ScalarProperty Name="GogusHareket" ColumnName="GogusHareket" />
+                <ScalarProperty Name="GogusAciklama" ColumnName="GogusAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Hakkimizda">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Hakkimizda">
+              <MappingFragment StoreEntitySet="TBL_Hakkimizda">
+                <ScalarProperty Name="HakkimizdaID" ColumnName="HakkimizdaID" />
+                <ScalarProperty Name="HakkimizdaResim" ColumnName="HakkimizdaResim" />
+                <ScalarProperty Name="HakkimizdaAciklama" ColumnName="HakkimizdaAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Karin">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Karin">
+              <MappingFragment StoreEntitySet="TBL_Karin">
+                <ScalarProperty Name="KarinID" ColumnName="KarinID" />
+                <ScalarProperty Name="KarinResim" ColumnName="KarinResim" />
+                <ScalarProperty Name="KarinHareket" ColumnName="KarinHareket" />
+                <ScalarProperty Name="KarinAciklama" ColumnName="KarinAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Kategori">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Kategori">
+              <MappingFragment StoreEntitySet="TBL_Kategori">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Kol">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Kol">
+              <MappingFragment StoreEntitySet="TBL_Kol">
+                <ScalarProperty Name="KolID" ColumnName="KolID" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="Hareket" ColumnName="Hareket" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Omuz">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Omuz">
+              <MappingFragment StoreEntitySet="TBL_Omuz">
+                <ScalarProperty Name="OmuzID" ColumnName="OmuzID" />
+                <ScalarProperty Name="OmuzReism" ColumnName="OmuzReism" />
+                <ScalarProperty Name="OmuzHareket" ColumnName="OmuzHareket" />
+                <ScalarProperty Name="OmuzAciklama" ColumnName="OmuzAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Sirt">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Sirt">
+              <MappingFragment StoreEntitySet="TBL_Sirt">
+                <ScalarProperty Name="SirtID" ColumnName="SirtID" />
+                <ScalarProperty Name="SırtResim" ColumnName="SırtResim" />
+                <ScalarProperty Name="SırtHareket" ColumnName="SırtHareket" />
+                <ScalarProperty Name="SırtAciklama" ColumnName="SırtAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Yorumlar">
+            <EntityTypeMapping TypeName="TEZModel.TBL_Yorumlar">
+              <MappingFragment StoreEntitySet="TBL_Yorumlar">
+                <ScalarProperty Name="Beslenme" ColumnName="Beslenme" />
+                <ScalarProperty Name="YorumID" ColumnName="YorumID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Yorum" ColumnName="Yorum" />
+                <ScalarProperty Name="Blog" ColumnName="Blog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
